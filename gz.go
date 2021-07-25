@@ -63,21 +63,21 @@ func (l *Logger) LogMode(level logger.LogLevel) logger.Interface {
 // Info print info
 func (l Logger) Info(ctx context.Context, msg string, args ...interface{}) {
 	if l.LogLevel >= logger.Info {
-		l.log.Sugar().Debugf(msg, args...)
+		l.log.Sugar().Debugf(msg, append([]interface{}{utils.FileWithLineNum()}, args...)...)
 	}
 }
 
 // Warn print warn messages
 func (l Logger) Warn(ctx context.Context, msg string, args ...interface{}) {
 	if l.LogLevel >= logger.Warn {
-		l.log.Sugar().Warnf(msg, args...)
+		l.log.Sugar().Warnf(msg, append([]interface{}{utils.FileWithLineNum()}, args...)...)
 	}
 }
 
 // Error print error messages
 func (l Logger) Error(ctx context.Context, msg string, args ...interface{}) {
 	if l.LogLevel >= logger.Error {
-		l.log.Sugar().Errorf(msg, args...)
+		l.log.Sugar().Errorf(msg, append([]interface{}{utils.FileWithLineNum()}, args...)...)
 	}
 }
 

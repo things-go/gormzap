@@ -1,4 +1,4 @@
-module github/things-go/gormzap
+module github.com/things-go/gormzap
 
 go 1.15
 

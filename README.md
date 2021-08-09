@@ -23,7 +23,7 @@ Use go get.
 
 Then import the modbus package into your own code.
 ```bash
-    import modbus "github.com/things-go/gormzap"
+    import gormzap "github.com/things-go/gormzap"
 ```
 
 ### Example

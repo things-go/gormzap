@@ -151,3 +151,9 @@ func (l Logger) Trace(ctx context.Context, begin time.Time, fc func() (string, i
 		l.log.Info("trace", fields...)
 	}
 }
+
+// Immutable custom immutable field
+func Immutable(key string, value interface{}) func(ctx context.Context) zap.Field {
+	field := zap.Any(key, value)
+	return func(ctx context.Context) zap.Field { return field }
+}

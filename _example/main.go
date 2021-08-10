@@ -17,16 +17,19 @@ func main() {
 		panic(err)
 	}
 	log := gormzap.New(zapL,
-		gormzap.WithCustomFields(func(ctx context.Context) zap.Field {
-			v := ctx.Value("requestID")
-			if v == nil {
+		gormzap.WithCustomFields(
+			gormzap.Immutable("service", "test"),
+			func(ctx context.Context) zap.Field {
+				v := ctx.Value("requestID")
+				if v == nil {
+					return zap.Skip()
+				}
+				if vv, ok := v.(string); ok {
+					return zap.String("requestID", vv)
+				}
 				return zap.Skip()
-			}
-			if vv, ok := v.(string); ok {
-				return zap.String("requestID", vv)
-			}
-			return zap.Skip()
-		}),
+			},
+		),
 		gormzap.WithConfig(logger.Config{
 			SlowThreshold:             200 * time.Millisecond,
 			Colorful:                  false,

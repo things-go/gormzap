@@ -41,7 +41,7 @@ func SetGormDBLogger(db *gorm.DB, l logger.Interface) {
 	db.Logger = l
 }
 
-// New new logger form gorm2
+// New logger form gorm2
 func New(zapLogger *zap.Logger, opts ...Option) logger.Interface {
 	l := &Logger{
 		log: zapLogger,

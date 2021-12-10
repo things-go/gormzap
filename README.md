@@ -21,7 +21,7 @@ Use go get.
     go get github.com/things-go/gormzap
 ```
 
-Then import the modbus package into your own code.
+Then import the gormzap package into your own code.
 ```bash
     import gormzap "github.com/things-go/gormzap"
 ```

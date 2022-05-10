@@ -20,12 +20,12 @@ func main() {
 		gormzap.WithCustomFields(
 			gormzap.Immutable("service", "test"),
 			func(ctx context.Context) zap.Field {
-				v := ctx.Value("requestID")
+				v := ctx.Value("requestId")
 				if v == nil {
 					return zap.Skip()
 				}
 				if vv, ok := v.(string); ok {
-					return zap.String("requestID", vv)
+					return zap.String("requestId", vv)
 				}
 				return zap.Skip()
 			},

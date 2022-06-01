@@ -50,7 +50,7 @@ func main() {
 	}
 	log := gormzap.New(zapL,
 		gormzap.WithCustomFields(
-			gormzap.Immutable("service", "test"),
+			gormzap.String("service", "test"),
 			func(ctx context.Context) zap.Field {
 				v := ctx.Value("requestId")
 				if v == nil {

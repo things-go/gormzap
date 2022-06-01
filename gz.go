@@ -153,7 +153,37 @@ func (l Logger) Trace(ctx context.Context, begin time.Time, fc func() (string, i
 }
 
 // Immutable custom immutable field
+// Deprecated: use Any instead
 func Immutable(key string, value interface{}) func(ctx context.Context) zap.Field {
+	return Any(key, value)
+}
+
+// Any custom immutable any field
+func Any(key string, value interface{}) func(ctx context.Context) zap.Field {
 	field := zap.Any(key, value)
+	return func(ctx context.Context) zap.Field { return field }
+}
+
+// String custom immutable string field
+func String(key string, value string) func(ctx context.Context) zap.Field {
+	field := zap.String(key, value)
+	return func(ctx context.Context) zap.Field { return field }
+}
+
+// Int64 custom immutable int64 field
+func Int64(key string, value int64) func(ctx context.Context) zap.Field {
+	field := zap.Int64(key, value)
+	return func(ctx context.Context) zap.Field { return field }
+}
+
+// Uint64 custom immutable uint64 field
+func Uint64(key string, value uint64) func(ctx context.Context) zap.Field {
+	field := zap.Uint64(key, value)
+	return func(ctx context.Context) zap.Field { return field }
+}
+
+// Float64 custom immutable float32 field
+func Float64(key string, value float64) func(ctx context.Context) zap.Field {
+	field := zap.Float64(key, value)
 	return func(ctx context.Context) zap.Field { return field }
 }

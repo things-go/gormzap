@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	go.uber.org/zap v1.23.0
-	gorm.io/gorm v1.23.8
+	gorm.io/gorm v1.23.9
 )
 
 require (
